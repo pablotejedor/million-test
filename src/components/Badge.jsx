@@ -1,5 +1,5 @@
-import React from 'react';
 import { colors } from '../assets/colors';
+import { capitalizeFirstLetter } from '../helpers/capitalizeFirstLetter';
 
 export default function Badge({ type }) {
      return (
@@ -9,8 +9,7 @@ export default function Badge({ type }) {
                     backgroundColor: colors[type],
                }}
           >
-               {type[0].toUpperCase()}
-               {type.slice(1)}
+               {capitalizeFirstLetter(type)}
           </div>
      );
 }
