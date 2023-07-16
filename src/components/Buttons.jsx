@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Buttons({ data, loading, setUrl }) {
      return (
-          <div className="flex justify-between w-1/2 my-10">
+          <div className="flex w-full justify-around md:justify-between md:w-1/2 my-10">
                <button
                     className={`py-3 px-10 text-white rounded-md text-xl hover:scale-105 hover:bg-slate-500 ${
                          !data?.prevPageUrl || loading

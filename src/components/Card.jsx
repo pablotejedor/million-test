@@ -4,7 +4,7 @@ import Badge from './Badge';
 export default function Card({ pokemon }) {
      return (
           <div
-               className="flex items-center justify-around py-5 px-10 bg-slate-300 m-5 rounded-xl cursor-pointer hover:scale-105 relative"
+               className="flex items-center justify-around py-5 px-10 bg-slate-300 rounded-xl cursor-pointer hover:scale-105 relative w-100"
                key={pokemon.id}
           >
                <div className="flex flex-col items-center">
