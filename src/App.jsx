@@ -9,20 +9,18 @@ function App() {
 
      return (
           <div className="flex flex-col items-center justify-center min-w-full bg-slate-200 min-h-screen py-10">
-               <h1 className="text-black-600 text-4xl">
-                    Let's make this damn thing work
-               </h1>
+               <h1 className="text-black-600 text-4xl">Gotta catch'em all!</h1>
 
                <Buttons data={data} loading={loading} setUrl={setUrl} />
 
                {loading ? (
                     <h3>Loading your data...</h3>
                ) : (
-                    <div className="flex w-full flex-wrap justify-start min-h-full">
+                    <div className="grid grid-cols-4 w-full min-h-full">
                          {data &&
                               data.listOfPokemons.map((pokemon) => (
                                    <div
-                                        className="flex flex-col items-center py-5 px-10 bg-slate-300 m-5 rounded-xl cursor-pointer hover:scale-105"
+                                        className="flex flex-col items-start py-5 px-10 bg-slate-300 m-5 rounded-xl cursor-pointer hover:scale-105"
                                         key={pokemon.id}
                                    >
                                         <img
