@@ -4,9 +4,9 @@ import usePokemons from './hooks/usePokemons';
 function App() {
      const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon');
 
-     const { data, prev, next, loading } = usePokemons(url);
+     const { data, errors, loading } = usePokemons(url);
 
-     console.log(data);
+     console.log(loading);
 
      return (
           <div className="flex flex-col items-center justify-center min-w-full bg-slate-200 min-h-screen py-10">
@@ -17,23 +17,23 @@ function App() {
                <div className="flex justify-between w-1/2 my-10">
                     <button
                          className={`py-3 px-10 text-white rounded-md text-xl hover:scale-105 hover:bg-slate-500 ${
-                              !prev || loading
+                              !data?.previousPageUrl || loading
                                    ? 'cursor-not-allowed bg-slate-300'
                                    : 'bg-slate-400'
                          }`}
-                         disabled={!prev || loading}
-                         onClick={() => setUrl(prev)}
+                         disabled={!data?.previousPageUrl || loading}
+                         onClick={() => setUrl(data?.previousPageUrl)}
                     >
                          Prev
                     </button>
                     <button
                          className={`py-3 px-10 text-white rounded-md text-xl hover:scale-105 hover:bg-slate-500 ${
-                              !next || loading
+                              !data?.nextPageUrl || loading
                                    ? 'cursor-not-allowed bg-slate-300'
                                    : 'bg-slate-400'
                          }`}
-                         disabled={!next || loading}
-                         onClick={() => setUrl(next)}
+                         disabled={!data?.nextPageUrl || loading}
+                         onClick={() => setUrl(data?.nextPageUrl)}
                     >
                          Next
                     </button>
@@ -44,7 +44,7 @@ function App() {
                ) : (
                     <div className="flex w-full flex-wrap justify-start min-h-full">
                          {data &&
-                              data.map((pokemon) => (
+                              data.listOfPokemons.map((pokemon) => (
                                    <div
                                         className="flex flex-col items-center py-5 px-10 bg-slate-300 m-5 rounded-xl cursor-pointer hover:scale-105"
                                         key={pokemon.id}
