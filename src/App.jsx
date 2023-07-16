@@ -21,7 +21,7 @@ export default function App() {
                ) : (
                     <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 grid-cols-1 gap-4 min-h-full p-6">
                          {data?.listOfPokemons.map((pokemon) => (
-                              <Card pokemon={pokemon} />
+                              <Card pokemon={pokemon} key={pokemon.name} />
                          ))}
                     </div>
                )}
