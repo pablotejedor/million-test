@@ -17,7 +17,7 @@ export default function App() {
                {loading ? (
                     <h3>Loading your data...</h3>
                ) : (
-                    <div className="grid grid-cols-4 w-full min-h-full">
+                    <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 w-full min-h-full">
                          {data?.listOfPokemons.map((pokemon) => (
                               <Card pokemon={pokemon} />
                          ))}
