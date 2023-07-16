@@ -26,7 +26,7 @@ export default function Card({ pokemon }) {
                </div>
 
                {/* Badges */}
-               <div className="flex items-center">
+               <div className="flex flex-col md:flex-row items-center">
                     {pokemon.types.map((type) => (
                          <Badge type={type.type.name} />
                     ))}

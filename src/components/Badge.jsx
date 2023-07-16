@@ -4,7 +4,7 @@ import { capitalizeFirstLetter } from '../helpers/capitalizeFirstLetter';
 export default function Badge({ type }) {
      return (
           <div
-               className={'rounded-lg px-6 py-1 text-white mx-1'}
+               className={'flex justify-center rounded-lg px-6 py-1 text-white m-1 w-3/4'}
                style={{
                     backgroundColor: colors[type],
                }}
