@@ -6,8 +6,6 @@ function App() {
 
      const { data, errors, loading } = usePokemons(url);
 
-     console.log(loading);
-
      return (
           <div className="flex flex-col items-center justify-center min-w-full bg-slate-200 min-h-screen py-10">
                <h1 className="text-black-600 text-4xl">
@@ -17,12 +15,12 @@ function App() {
                <div className="flex justify-between w-1/2 my-10">
                     <button
                          className={`py-3 px-10 text-white rounded-md text-xl hover:scale-105 hover:bg-slate-500 ${
-                              !data?.previousPageUrl || loading
+                              !data?.prevPageUrl || loading
                                    ? 'cursor-not-allowed bg-slate-300'
                                    : 'bg-slate-400'
                          }`}
-                         disabled={!data?.previousPageUrl || loading}
-                         onClick={() => setUrl(data?.previousPageUrl)}
+                         disabled={!data?.prevPageUrl || loading}
+                         onClick={() => setUrl(data?.prevPageUrl)}
                     >
                          Prev
                     </button>

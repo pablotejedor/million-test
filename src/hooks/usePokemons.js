@@ -8,7 +8,7 @@ export default function usePokemons(url) {
           errors: null,
      });
 
-     const handleFetch = useCallback(async () => {
+     const handleFetch = () => {
           setDataState((prev) => ({ ...prev, loading: true }));
 
           getPokemons(url)
@@ -24,7 +24,7 @@ export default function usePokemons(url) {
                .finally(() =>
                     setDataState((prev) => ({ ...prev, loading: false }))
                );
-     }, [url]);
+     };
 
      useEffect(() => {
           const abortController = new AbortController();
