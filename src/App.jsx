@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import usePokemons from './hooks/usePokemons';
+import Buttons from './components/Buttons';
 
 function App() {
      const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon');
@@ -12,30 +13,7 @@ function App() {
                     Let's make this damn thing work
                </h1>
 
-               <div className="flex justify-between w-1/2 my-10">
-                    <button
-                         className={`py-3 px-10 text-white rounded-md text-xl hover:scale-105 hover:bg-slate-500 ${
-                              !data?.prevPageUrl || loading
-                                   ? 'cursor-not-allowed bg-slate-300'
-                                   : 'bg-slate-400'
-                         }`}
-                         disabled={!data?.prevPageUrl || loading}
-                         onClick={() => setUrl(data?.prevPageUrl)}
-                    >
-                         Prev
-                    </button>
-                    <button
-                         className={`py-3 px-10 text-white rounded-md text-xl hover:scale-105 hover:bg-slate-500 ${
-                              !data?.nextPageUrl || loading
-                                   ? 'cursor-not-allowed bg-slate-300'
-                                   : 'bg-slate-400'
-                         }`}
-                         disabled={!data?.nextPageUrl || loading}
-                         onClick={() => setUrl(data?.nextPageUrl)}
-                    >
-                         Next
-                    </button>
-               </div>
+               <Buttons data={data} loading={loading} setUrl={setUrl} />
 
                {loading ? (
                     <h3>Loading your data...</h3>
