@@ -1,38 +1,23 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { getPokemons } from '../services/getPokemons';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 export default function usePokemons(url) {
-     const [dataState, setDataState] = useState({
-          data: null,
-          loading: true,
-          errors: null,
+     const { data, isLoading, error } = useQuery({
+          queryKey: [url],
+          queryFn: () => getPokemons(url).then((response) => response),
+          refetchOnMount: false,
+          refetchOnWindowFocus: false,
+          staleTime: Infinity,
      });
 
-     const handleFetch = () => {
-          setDataState((prev) => ({ ...prev, loading: true }));
-
-          getPokemons(url)
-               .then((response) =>
-                    setDataState((prev) => ({
-                         ...prev,
-                         data: response,
-                    }))
-               )
-               .catch((error) =>
-                    setDataState((prev) => ({ ...prev, errors: error }))
-               )
-               .finally(() =>
-                    setDataState((prev) => ({ ...prev, loading: false }))
-               );
-     };
+     const queryClient = useQueryClient();
 
      useEffect(() => {
-          const abortController = new AbortController();
-
-          handleFetch();
-
-          return () => abortController.abort();
+          queryClient.invalidateQueries({
+               queryKey: [url],
+          });
      }, [url]);
 
-     return dataState;
+     return { data, isLoading, error };
 }

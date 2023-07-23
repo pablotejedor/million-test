@@ -6,7 +6,7 @@ import Card from './components/Card';
 export default function App() {
      const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon');
 
-     const { data, errors, loading } = usePokemons(url);
+     const { data, isLoading } = usePokemons(url);
 
      return (
           <div className="flex flex-col items-center justify-center bg-slate-200 min-h-screen py-10">
@@ -14,9 +14,9 @@ export default function App() {
                     Gotta catch'em all!
                </h1>
 
-               <Buttons data={data} loading={loading} setUrl={setUrl} />
+               <Buttons data={data} isLoading={isLoading} setUrl={setUrl} />
 
-               {loading ? (
+               {isLoading ? (
                     <h3>Loading your data...</h3>
                ) : (
                     <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 grid-cols-1 gap-4 min-h-full p-6">
